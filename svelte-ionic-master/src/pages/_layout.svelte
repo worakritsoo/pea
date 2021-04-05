@@ -17,53 +17,50 @@
     </div>
   </ion-split-pane>
 </ion-app>
-<CookieJar />
-
 
 <style>
-@keyframes shadow-pulse {
-  0% {
-    box-shadow: 0 0 0 0px rgba(0, 0, 0, 0.2);
+  @keyframes shadow-pulse {
+    0% {
+      box-shadow: 0 0 0 0px rgba(0, 0, 0, 0.2);
+    }
+    100% {
+      box-shadow: 0 0 0 135px rgba(0, 0, 0, 0);
+    }
   }
-  100% {
-    box-shadow: 0 0 0 135px rgba(0, 0, 0, 0);
-  }
-}
-
 </style>
 
 <script>
-import { IonicShowModal } from "../services/IonicControllers";
+  import { IonicShowModal } from "../services/IonicControllers";
 
-import localforage from "localforage";
+  import localforage from "localforage";
 
-import Menu from "../components/Menu.svelte";
+  import Menu from "../components/Menu.svelte";
 
-import CookieJar from "../components/CookieJar.svelte";
+  import CookieJar from "../components/CookieJar.svelte";
 
-// source viewer and pulsating class for the FAB
-let pulseSourceViewer = false;
-localforage.getItem("has-seen-source").then((value) => {
-  console.log("has-seen-source", value);
-  if (!value) {
-    // let's not trigger the user immmediately
-    setTimeout(() => {
-      pulseSourceViewer = true;
-      // and stop the pulse after 1 minute
+  // source viewer and pulsating class for the FAB
+  let pulseSourceViewer = false;
+  localforage.getItem("has-seen-source").then((value) => {
+    console.log("has-seen-source", value);
+    if (!value) {
+      // let's not trigger the user immmediately
       setTimeout(() => {
-        pulseSourceViewer = false;
-      }, 60000);
-    }, 20000);
-  }
-});
-
-// handler for the sourceviewer
-const viewSource = () => {
-  localforage.setItem("has-seen-source", true);
-  pulseSourceViewer = false;
-
-  IonicShowModal("source-viewer", SourceViewer, {
-    name: window.location.pathname,
+        pulseSourceViewer = true;
+        // and stop the pulse after 1 minute
+        setTimeout(() => {
+          pulseSourceViewer = false;
+        }, 60000);
+      }, 20000);
+    }
   });
-};
+
+  // handler for the sourceviewer
+  const viewSource = () => {
+    localforage.setItem("has-seen-source", true);
+    pulseSourceViewer = false;
+
+    IonicShowModal("source-viewer", SourceViewer, {
+      name: window.location.pathname,
+    });
+  };
 </script>
