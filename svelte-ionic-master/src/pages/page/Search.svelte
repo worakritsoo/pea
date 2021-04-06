@@ -8,7 +8,6 @@
       inputmode="search"
       type="search"
       on:input="{handler}"
-      showCancelButton="always"
     ></ion-searchbar>
 
   </ion-toolbar>
@@ -19,8 +18,7 @@
   {:then users}
     {#each users as user}
       <!-- svelte-ignore missing-declaration -->
-      <!-- {@debug user} -->
-      <Profile {...user} />
+      <Profile {user} />
     {/each}
   {:catch error}
     <p style="color: red">{error.data}</p>
@@ -30,13 +28,12 @@
 <script>
   import Profile from "../../components/Profile.svelte";
   import Fuse from "fuse.js/";
-  import * as user from "./users.json";
-
+  const list =  getRandomUser();
   let promise = getRandomUser();
-  async function getRandomUser() {
-    const res = await fetch("./users.json");
-    const data = await res.json();
 
+  async function getRandomUser() {
+    const res = await fetch(`https://randomuser.me/api/?results=50`);
+    const data = await res.json();
     if (res.ok) {
       return data.results;
     } else {
@@ -45,7 +42,17 @@
   }
 
   async function handler(event) {
-    const pattern = event.target.value;
-    log(user);
+    const res = await getRandomUser();
+    const list = res;
+    const options = {
+      includeScore: true,
+      // equivalent to `keys: [['author', 'tags', 'value']]`
+      keys: ['value']
+    };
+    const fuse = new Fuse(list, options);
+    console.log(fuse,list);
+    const result = fuse.search(`${event.target.value}`);
+
+    return result
   }
 </script>
