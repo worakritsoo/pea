@@ -2,14 +2,15 @@
   <title>Ionic Companion - Discover</title>
 </svelte:head>
 <ion-header>
-  <ion-toolbar color="dark">
+  <ion-toolbar color="primary">
     <ion-searchbar
-      animated
-      value="Pea"
+      placeholder="Filter Search"
       inputmode="search"
-      placeholder="Search Pea"
-      ionInput="handleInput()"
+      type="search"
+      on:input="{handler}"
+      showCancelButton="always"
     ></ion-searchbar>
+
   </ion-toolbar>
 </ion-header>
 <ion-content fullscreen>
@@ -27,22 +28,24 @@
 </ion-content>
 
 <script>
-import Profile from "../../components/Profile.svelte";
+  import Profile from "../../components/Profile.svelte";
+  import Fuse from "fuse.js/";
+  import * as user from "./users.json";
 
-let promise = getRandomUser();
-async function getRandomUser() {
-  const res = await fetch("https://randomuser.me/api/?results=50");
-  const data = await res.json();
+  let promise = getRandomUser();
+  async function getRandomUser() {
+    const res = await fetch("./users.json");
+    const data = await res.json();
 
-  if (res.ok) {
-    return data.results;
-  } else {
-    throw new Error(data);
+    if (res.ok) {
+      return data.results;
+    } else {
+      throw new Error(data);
+    }
   }
-}
 
-
-function handleInput(event) {
-  console.log(event.target.value);
-}
+  async function handler(event) {
+    const pattern = event.target.value;
+    log(user);
+  }
 </script>
