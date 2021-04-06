@@ -17,8 +17,7 @@
     <p>...waiting</p>
   {:then users}
     {#each users as user}
-      <!-- svelte-ignore missing-declaration -->
-      <Profile {user} />
+      <Profile {...user} />
     {/each}
   {:catch error}
     <p style="color: red">{error.data}</p>
@@ -28,31 +27,27 @@
 <script>
   import Profile from "../../components/Profile.svelte";
   import Fuse from "fuse.js/";
-  const list =  getRandomUser();
   let promise = getRandomUser();
 
   async function getRandomUser() {
     const res = await fetch(`https://randomuser.me/api/?results=50`);
     const data = await res.json();
-    if (res.ok) {
-      return data.results;
-    } else {
-      throw new Error(data);
-    }
+   
   }
 
   async function handler(event) {
-    const res = await getRandomUser();
-    const list = res;
+    const res = await fetch(`https://randomuser.me/api/?results=50`);
+    const list = await res.json()
+    
     const options = {
       includeScore: true,
+      useExtendedSearch: true,
       // equivalent to `keys: [['author', 'tags', 'value']]`
-      keys: ['value']
     };
-    const fuse = new Fuse(list, options);
-    console.log(fuse,list);
-    const result = fuse.search(`${event.target.value}`);
+   const fuse = new Fuse(list, options)
 
-    return result
+    const result = fuse.search('s')
+    console.log(result);
   }
+  getRandomUser();
 </script>
