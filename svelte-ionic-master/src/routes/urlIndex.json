@@ -45,9 +45,10 @@
   "/page/AddLink",
   "/page/Collection",
   "/page/Discover",
+  "/page/Icon",
   "/page/Login",
-  "/page/Ranking",
   "/page/Search",
   "/page/Setting",
-  "/page/Timeline"
+  "/page/Timeline",
+  "/page/Users"
 ]

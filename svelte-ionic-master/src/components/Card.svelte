@@ -5,11 +5,11 @@
   </ion-card-header>
   <ion-card-content>
     <ion-col>
-      <ion-button fill="clear" on:click="{handleClick}" active={toggleLike}>
-        <ion-icon slot="icon-only" ios="heart" md="heart-sharp"></ion-icon>
+      <ion-button fill="clear" on:click={toggle}  active=true>
+        <ion-icon slot="icon-only" ios="heart-outline" md="heart-sharp-outline"></ion-icon>
       </ion-button>
       <ion-button fill="clear">
-        <ion-icon slot="icon-only" ios="share" md="share-sharp"></ion-icon>
+        <ion-icon slot="icon-only" ios="share-outline" md="share-sharp-outline"></ion-icon>
       </ion-button>
       <ion-chip>
         <ion-avatar>
@@ -30,8 +30,11 @@ export let content = "Content form Card.svetle";
 export let link = "appLink";
 export let website = "webHosting";
 export let rating = 9;
+export let like = false
 
-
+	function toggle() {
+		button.toggle = !button.toggle;
+	}
 
   const handleClick = () => {
   console.log("User Click!");

@@ -21,7 +21,7 @@
             <ion-icon
               name="{menuItem.icon}"
               slot="start"
-              color="{getRandomColor()}"
+             
             ></ion-icon>
             <ion-label>{menuItem.label}</ion-label>
           </ion-item>
@@ -37,8 +37,8 @@ ion-item {
   cursor: pointer;
 }
 
-.menuhide {
-  display: none;
+.ion-menu{
+  max-width: 10%!important;
 }
 </style>
 

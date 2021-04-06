@@ -1,6 +1,6 @@
-<ion-header translucent="Name">
+<ion-header translucent="true">
   <ion-toolbar>
-    <ion-buttons slot="Name">
+    <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>AddLink</ion-title>

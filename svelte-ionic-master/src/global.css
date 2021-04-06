@@ -62,3 +62,17 @@
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
 }
+:root {
+  --ion-safe-area-top: 20px;
+  --ion-safe-area-bottom: 22px;
+}
+
+:active{
+  outline: none;
+  box-shadow: none;
+}
+
+.split-pane-visible >.split-pane-side {
+  min-width: 150px; /* Default: 270px */
+  max-width: 230px; /* Same as when menu opens in mobile mode */
+}

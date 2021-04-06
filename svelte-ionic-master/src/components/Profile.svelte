@@ -1,4 +1,4 @@
-<ion-card class="act-card" _value="act-card">
+<ion-card >
   <ion-card-header>
     <ion-card-subtitle>
       {name.title}`{name.first}
@@ -33,14 +33,11 @@
 <script>
 import * as faker from 'faker';
 
-
-
 export let pdf;
 export let vdo;
 export const rating = (Math.random()*5);
 export let name;
 export let picture;
-
 export let title = faker.commerce.product()
 export let description=faker.lorem.sentences()
 

@@ -3,7 +3,7 @@
 </svelte:head>
 <ion-header translucent="Name">
   <ion-toolbar>
-    <ion-buttons slot="Name">
+    <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>Discover</ion-title>
