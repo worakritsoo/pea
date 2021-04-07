@@ -44,6 +44,7 @@
   "/ionic/Toolbar",
   "/page/AddLink",
   "/page/Collection",
+  "/page/Controller",
   "/page/Discover",
   "/page/Icon",
   "/page/Login",

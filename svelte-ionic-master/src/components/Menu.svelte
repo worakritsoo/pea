@@ -7,7 +7,9 @@
   {#if menuItems.length > 0}
     <ion-header>
       <ion-toolbar translucent="true">
-        <ion-title>Menu</ion-title>
+        <ion-avatar slot="start">
+          <img alt="avatar" src="../assets/img/ionic/avatar.svg" />
+        </ion-avatar>
       </ion-toolbar>
     </ion-header>
     <ion-content>
@@ -35,6 +37,9 @@
 <style>
 ion-item {
   cursor: pointer;
+}
+ion-avatar{
+  --keyboard-offset: 0px; --overflow: auto; --offset-top: 76px; --offset-bottom: 1px; list-style-type: none; --border-width: 0px; --border-style: solid; --padding-top: 0px; --padding-bottom: 0px; --padding-end: 0px; --inner-padding-top: 0px; --inner-padding-bottom: 0px; --inner-padding-start: 0px; --inner-box-shadow: none; --show-full-highlight: 0; --show-inset-highlight: 0; --detail-icon-color: initial; --detail-icon-font-size: 20px; --detail-icon-opacity: 0.25; --color-activated: var(--color); --color-focused: var(--color); --color-hover: var(--color); --ripple-color: currentColor; -webkit-font-smoothing: antialiased; --min-height: 48px; --background: var(--ion-item-background, var(--ion-background-color, #fff)); --background-activated: transparent; --background-focused: currentColor; --background-hover: currentColor; --background-activated-opacity: 0; --background-focused-opacity: 0.12; --background-hover-opacity: 0.04; --transition: opacity 15ms linear, background-color 15ms linear; --padding-start: 16px; --color: var(--ion-item-color, var(--ion-text-color, #000)); --border-color: var(--ion-item-border-color, var(--ion-border-color, var(--ion-color-step-150, rgba(0, 0, 0, 0.13)))); --inner-padding-end: 16px; --inner-border-width: 0 0 1px 0; --highlight-height: 2px; --highlight-color-focused: var(--ion-color-primary, #3880ff); --highlight-color-valid: var(--ion-color-success, #2dd36f); --highlight-color-invalid: var(--ion-color-danger, #eb445a); font-family: inherit; font-size: inherit; font-style: inherit; font-weight: inherit; letter-spacing: inherit; text-indent: inherit; text-transform: inherit; text-align: inherit; white-space: inherit; color: inherit; border-radius: var(--border-radius); display: block; --border-radius: 50%; width: 40px; height: 40px; margin-top: 8px; margin-bottom: 8px; margin-right: unset; margin-inline-end: 16px; box-sizing: border-box; -webkit-tap-highlight-color: transparent; visibility: inherit;
 }
 
 .ion-menu{

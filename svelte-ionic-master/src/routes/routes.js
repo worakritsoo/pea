@@ -1,11 +1,11 @@
 
 /**
  * @roxi/routify 2.1.2
- * File generated Tue Apr 06 2021 22:06:50 GMT+0700 (เวลาอินโดจีน)
+ * File generated Wed Apr 07 2021 08:43:57 GMT+0700 (เวลาอินโดจีน)
  */
 
 export const __version = "2.1.2"
-export const __timestamp = "2021-04-06T15:06:50.781Z"
+export const __timestamp = "2021-04-07T01:43:57.549Z"
 
 //buildRoutes
 import { buildClientTree } from "@roxi/routify/runtime/buildRoutes"
@@ -1357,6 +1357,33 @@ export const _tree = {
           "path": "/page/Collection",
           "id": "_page_Collection",
           "component": () => import('../pages/page/Collection.svelte').then(m => m.default)
+        },
+        {
+          "isFile": true,
+          "isDir": false,
+          "file": "Controller.svelte",
+          "filepath": "/page/Controller.svelte",
+          "name": "Controller",
+          "ext": "svelte",
+          "badExt": false,
+          "absolutePath": "C:/Users/Worakrit/pbox/pea/svelte-ionic-master/src/pages/page/Controller.svelte",
+          "importPath": "../pages/page/Controller.svelte",
+          "isLayout": false,
+          "isReset": false,
+          "isIndex": false,
+          "isFallback": false,
+          "isPage": true,
+          "ownMeta": {},
+          "meta": {
+            "preload": false,
+            "prerender": true,
+            "precache-order": false,
+            "precache-proximity": true,
+            "recursive": true
+          },
+          "path": "/page/Controller",
+          "id": "_page_Controller",
+          "component": () => import('../pages/page/Controller.svelte').then(m => m.default)
         },
         {
           "isFile": true,
