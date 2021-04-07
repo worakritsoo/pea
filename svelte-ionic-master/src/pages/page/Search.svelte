@@ -1,54 +1,81 @@
 <svelte:head>
-  <title>Ionic Companion - Discover</title>
+  <title>Ionic Companion - Searchbar</title>
 </svelte:head>
-   <ion-header translucent>
-      <ion-toolbar>
-        <ion-searchbar></ion-searchbar>
-      </ion-toolbar>
-    </ion-header>
-    <ion-content fullscreen>
-      <ion-list>
-       {#await promise then items}
-         <!-- promise was fulfilled -->
-         {#if items}
-            <!-- content here -->
-            {#each items as item,i}
-               <!-- content here -->
-                {item}
-            {/each}
-         {/if}
-       {/await}
-      </ion-list>
-    </ion-content>
+<ion-header translucent="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Searchbar</ion-title>
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-searchbar on:ionInput="{handleInput}"></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+<ion-content fullscreen>
+  <ion-list bind:this="{listElement}">
+    <ion-item>Amsterdam</ion-item>
+    <ion-item>Bogota</ion-item>
+    <ion-item>Buenos Aires</ion-item>
+    <ion-item>Cairo</ion-item>
+    <ion-item>Dhaka</ion-item>
+    <ion-item>Edinburgh</ion-item>
+    <ion-item>Geneva</ion-item>
+    <ion-item>Genoa</ion-item>
+    <ion-item>Glasgow</ion-item>
+    <ion-item>Hanoi</ion-item>
+    <ion-item>Hong Kong</ion-item>
+    <ion-item>Islamabad</ion-item>
+    <ion-item>Istanbul</ion-item>
+    <ion-item>Jakarta</ion-item>
+    <ion-item>Kiel</ion-item>
+    <ion-item>Kyoto</ion-item>
+    <ion-item>Le Havre</ion-item>
+    <ion-item>Lebanon</ion-item>
+    <ion-item>Lhasa</ion-item>
+    <ion-item>Lima</ion-item>
+    <ion-item>London</ion-item>
+    <ion-item>Los Angeles</ion-item>
+    <ion-item>Madrid</ion-item>
+    <ion-item>Manila</ion-item>
+    <ion-item>New York</ion-item>
+    <ion-item>Olympia</ion-item>
+    <ion-item>Oslo</ion-item>
+    <ion-item>Panama City</ion-item>
+    <ion-item>Peking</ion-item>
+    <ion-item>Philadelphia</ion-item>
+    <ion-item>San Francisco</ion-item>
+    <ion-item>Seoul</ion-item>
+    <ion-item>Taipeh</ion-item>
+    <ion-item>Tel Aviv</ion-item>
+    <ion-item>Tokio</ion-item>
+    <ion-item>Uelzen</ion-item>
+    <ion-item>Washington</ion-item>
+  </ion-list>
+</ion-content>
 
 <script>
-  
-  import User from "./_User.svelte";
-  import Fuse from "fuse.js/";
-  let promise = getRandomUser();
+import { onMount } from "svelte";
 
-  async function getRandomUser() {
-    const res = await fetch(`https://randomuser.me/api/?results=50`);
-    const data = await res.json();
-    if (res.ok) return data.results;
-    else {
-      return error;
-    }
-  }
+let listElement;
+let items;
 
-  async function handler(event) {
-    const res = await fetch(`https://randomuser.me/api/?results=50`);
-    const list = await res.json();
+onMount(() => {
+  items = Array.from(listElement.children);
+});
 
-    const options = {
-      includeScore: true,
-      useExtendedSearch: true,
-      // equivalent to `keys: [['author', 'tags', 'value']]`
-    };
-    const fuse = new Fuse(list, options);
+const list = async () => {
+      const res = fetch('https://api.spacexdata.com/v4/')
+}
 
-    const result = fuse.search("s");
-    console.log(result);
-  }
-
+function handleInput(event) {
+  const query = event.target.value.toLowerCase();
+  requestAnimationFrame(() => {
+    items.forEach((item) => {
+      const shouldShow = item.textContent.toLowerCase().indexOf(query) > -1;
+      console.log("Should show", item.textContent, shouldShow);
+      item.style.display = shouldShow ? "block" : "none";
+    });
+  });
+}
 </script>
